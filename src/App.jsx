@@ -63,8 +63,8 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router';
 import { useAuth } from './contexts/AuthContext';
-import { useSecurity } from './contexts/SecurityContext';
-import AccessDenied from './components/AccessDenied';
+//import { useSecurity } from './contexts/SecurityContext';
+//import AccessDenied from './components/AccessDenied';
 import AuthenticationFlow from './components/AuthenticationFlow';
 import Dashboard from './components/Dashboard';
 import LoadingScreen from './components/LoadingScreen';
@@ -72,19 +72,19 @@ import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth();
-  const { isValidReferrer, checkReferrer } = useSecurity();
+  //const { isValidReferrer, checkReferrer } = useSecurity();
 
-  useEffect(() => {
-    checkReferrer();
-  }, [checkReferrer]);
+  // useEffect(() => {
+  //   checkReferrer();
+  // }, [checkReferrer]);
 
   if (isLoading) {
     return <LoadingScreen />;
   }
 
-  if (!isValidReferrer) {
-    return <AccessDenied />;
-  }
+  // if (!isValidReferrer) {
+  //   return <AccessDenied />;
+  // }
 
   return (
     <div className="min-h-screen bg-gray-50">
