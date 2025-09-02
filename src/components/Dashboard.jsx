@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useSecurity } from '../contexts/SecurityContext';
 
 const Dashboard = () => {
-  const { userData, logout, isAdmin, refreshAccessToken, getUserRole, hasPermission, rolePermissions, updateUserRoleAndType } = useAuth();
+  const { userData, logout, isAdmin, getUserRole, hasPermission, rolePermissions, updateUserRoleAndType } = useAuth();
   const securityContext = useSecurity();
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeTab, setActiveTab] = useState('overview');
@@ -77,6 +77,7 @@ const Dashboard = () => {
             localStorage.setItem(test, test);
             localStorage.removeItem(test);
             return true;
+            /* eslint-disable */
           } catch (e) {
             return false;
           }

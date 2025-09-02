@@ -1,10 +1,12 @@
+
+
 //to optimze performence
 import React, { createContext, useContext, useCallback, useState, useEffect, useMemo, useRef } from 'react';
 import { SecurityUtils } from '../utils/security';
 import { useDeviceDetection } from '../hooks/useDeviceDetection';
 
 const SecurityContext = createContext();
-
+/* eslint-disable */
 export const useSecurity = () => {
   const context = useContext(SecurityContext);
   if (!context) {

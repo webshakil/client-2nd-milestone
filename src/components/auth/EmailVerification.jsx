@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast';
 
 const EmailVerification = () => {
   const { isLoading, sendEmailOTP, verifyEmailOTP, currentStep, email, goBackStep } = useAuth();
+
   const [localEmail, setLocalEmail] = useState(email || '');
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -28,6 +29,9 @@ const EmailVerification = () => {
     e.preventDefault();
     
     const sanitizedEmail = SecurityUtils.sanitizeInput(localEmail.trim());
+     
+    //const sanitizedEmail = localEmail.trim();
+    
     
     // Frontend validation
     if (!sanitizedEmail) {
@@ -44,6 +48,7 @@ const EmailVerification = () => {
 
     try {
       setError('');
+      console.log('🔍 EMAIL TRACE 3 - About to call sendEmailOTP with:', sanitizedEmail);
       await sendEmailOTP(sanitizedEmail);
       setTimeLeft(300); // 5 minutes
       // Focus first OTP input

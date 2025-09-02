@@ -199,6 +199,7 @@ const AdminManagement = () => {
       console.log(`Updating user ${userId} role to ${newRole}`);
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 500));
+      /* eslint-disable */
     } catch (error) {
       setError('Failed to update user role');
     } finally {

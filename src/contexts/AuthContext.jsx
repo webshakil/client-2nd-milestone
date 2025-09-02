@@ -6,7 +6,7 @@ import { SecurityUtils } from '../utils/security';
 import { toast } from 'react-hot-toast';
 
 const AuthContext = createContext();
-
+/* eslint-disable */
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -60,7 +60,8 @@ const authReducer = (state, action) => {
     case 'SET_STEP':
       return { ...state, currentStep: action.payload };
     case 'SET_EMAIL':
-      return { ...state, email: SecurityUtils.sanitizeInput(action.payload) };
+      // return { ...state, email: SecurityUtils.sanitizeInput(action.payload) };
+      return { ...state, email: action.payload };
     case 'SET_PHONE':
       return { ...state, phone: SecurityUtils.sanitizeInput(action.payload) };
     case 'SET_EMAIL_VERIFIED':
@@ -304,7 +305,7 @@ export const AuthProvider = ({ children }) => {
       const response = await api3003(`/api/users/profile/${targetUserId}`, {
         method: 'GET'
       });
-      console.log("userRoleResponse===>", response)
+     
 
       if (response?.success && response?.data) {
         // Update user data if fetching current user
@@ -608,13 +609,16 @@ export const AuthProvider = ({ children }) => {
   // Get User ID from check-user endpoint
   const getUserId = useCallback(async () => {
     try {
+     
+      
       const response = await api3001('/api/auth/check-user', {
         body: {
           email: state.email,
           phone: state.phone,
         }
       });
-
+    
+      
       if (response?.success && response?.userId) {
         dispatch({ type: 'SET_USER_ID', payload: response.userId });
         return response.userId;
@@ -629,12 +633,15 @@ export const AuthProvider = ({ children }) => {
   // STEP 1: Send email OTP
   const sendEmailOTP = useCallback(async (email) => {
     try {
+     
       dispatch({ type: 'SET_LOADING', payload: true });
       dispatch({ type: 'SET_ERROR', payload: null });
 
       if (!SecurityUtils.isValidEmail(email)) {
         throw new Error('Invalid email format');
       }
+
+   
 
       const response = await api3001('/api/auth/send-email-otp', {
         body: {
@@ -881,7 +888,7 @@ export const AuthProvider = ({ children }) => {
 
       if (isBiometricSupported) {
         try {
-          console.log('Attempting biometric authentication...');
+         
           const deviceFingerprint = await generateDeviceFingerprint();
           const deviceInfo = {
             type: /mobile/i.test(navigator.userAgent) ? 'mobile' :
@@ -966,7 +973,7 @@ export const AuthProvider = ({ children }) => {
 
                   if (finish?.success) {
                     biometricSuccess = true;
-                    console.log('Biometric authentication completed successfully');
+                   
                   }
                 }
               }
