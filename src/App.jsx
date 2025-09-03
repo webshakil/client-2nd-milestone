@@ -60,14 +60,15 @@
 
 //latest orginal code without mimic
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router';
 import { useAuth } from './contexts/AuthContext';
 //import { useSecurity } from './contexts/SecurityContext';
 //import AccessDenied from './components/AccessDenied';
 import AuthenticationFlow from './components/AuthenticationFlow';
-import Dashboard from './components/Dashboard';
+//import Dashboard from './components/Dashboard';
 import LoadingScreen from './components/LoadingScreen';
+import Dashboard from './components/Dasbaord/Dashboard';
 //import AdminManagement from './components/AdminManagement';
 
 function App() {
