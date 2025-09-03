@@ -1,5 +1,5 @@
-//to solve endless loading
-//to bypass twilio
+// //to solve endless loading
+// //to bypass twilio
 import React, { createContext, useContext, useReducer, useCallback, useEffect, useState, useRef } from 'react';
 import { useSecurity } from './SecurityContext';
 import { SecurityUtils } from '../utils/security';

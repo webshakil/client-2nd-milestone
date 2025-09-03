@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { SecurityUtils } from '../../utils/security';
 import { toast } from 'react-hot-toast';
+//import { useAuth } from '../../contexts/auth/AuthContext';
 
 const EmailVerification = () => {
   const { isLoading, sendEmailOTP, verifyEmailOTP, currentStep, email, goBackStep } = useAuth();

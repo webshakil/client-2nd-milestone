@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useDeviceDetection } from '../../hooks/useDeviceDetection';
 import { toast } from 'react-hot-toast';
+//import { useAuth } from '../../contexts/auth/AuthContext';
 
 const BiometricCapture = () => {
   const { isLoading, completeAuthentication, currentStep } = useAuth();

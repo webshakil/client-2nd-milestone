@@ -6,6 +6,7 @@ import App from './App.jsx'
 import { AuthProvider } from './contexts/AuthContext.jsx'
 import { SecurityProvider } from './contexts/SecurityContext.jsx'
 import './index.css'
+//import { AuthProvider } from './contexts/auth/AuthProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

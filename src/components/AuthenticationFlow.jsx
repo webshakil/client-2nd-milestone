@@ -6,6 +6,7 @@ import BiometricCapture from './auth/BiometricCapture';
 import FallbackSecurity from './auth/FallbackSecurity';
 import SecurityQuestionsSetup from './SecurityQuestionsSetup';
 import ProfileCreation from './ProfileCreation';
+//import { useAuth } from '../contexts/auth/AuthContext';
 import { useAuth } from '../contexts/AuthContext';
 
 // Enhanced Loading Screen with better UX

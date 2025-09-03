@@ -8,10 +8,12 @@ import AdminDashboard from './Dashboards/AdminDashboard';
 import ModeratorDashboard from './Dashboards/ModeratorDashboard';
 import AuditorDashboard from './Dashboards/AuditorDashboard';
 import UserDashboard from './Dashboards/UserDashboard';
-import { useAuth } from '../../contexts/AuthContext';
+//import { useAuth } from '../../contexts/AuthContext';
 import SecurityTab from './Tabs/SecurityTab';
 import BiometricTab from './Tabs/BiometricTab';
 import DeviceTab from './Tabs/DeviceTab';
+import { useAuth } from '../../contexts/auth/AuthContext';
+import AnalystDashboard from './Dashboards/AnalystDashboard';
 
 const Dashboard = () => {
   const { userData, logout, isAdmin, getUserRole, hasPermission, rolePermissions, updateUserRoleAndType } = useAuth();
