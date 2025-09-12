@@ -116,7 +116,7 @@ class ElectionService {
         
         console.log(`Creating question ${i + 1}:`, questionData);
 
-        const questionResponse = await apiClient.request('user', `/api/questions/${electionId}/questions`, {
+        const questionResponse = await apiClient.request('votingengineqa', `/api/questions/${electionId}/questions`, {
           method: 'POST',
           body: questionData
         });
