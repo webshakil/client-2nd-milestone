@@ -1,5 +1,4 @@
-//this is without token and below is with token
-//after diving
+//this is without token and below with token
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-hot-toast';
