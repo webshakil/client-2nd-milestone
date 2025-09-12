@@ -145,3 +145,4 @@ Proprietary - Vottery Platform
 # sngine-vot-client
 # client-2nd-milestone
 # client-2nd-milestone
+# client-2nd-milestone
