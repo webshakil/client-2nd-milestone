@@ -68,17 +68,6 @@ isTokenExpired: () => {
   }
   
 }
-
-  // isTokenExpired: () => {
-  //   const timestamp = localStorage.getItem('vottery_token_timestamp');
-  //   if (!timestamp) return true;
-    
-  //   // Assuming 7 days expiry (7 * 24 * 60 * 60 * 1000)
-  //   const tokenAge = Date.now() - parseInt(timestamp);
-  //   const maxAge = 7 * 24 * 60 * 60 * 1000;
-    
-  //   return tokenAge >= maxAge;
-  // }
 };
 
 // Request deduplication cache
