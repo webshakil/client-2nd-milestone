@@ -72,7 +72,7 @@ const VotePage = () => {
     
     try {
       console.log('Submitting vote to API...');
-      const response = await fetch(`http://localhost:3005/api/voting/${electionId}/vote`, {
+      const response = await fetch(`https://voting-engine-3zkh.onrender.com/api/voting/${electionId}/vote`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ const VotePage = () => {
 
   const verifyVote = async (voteId) => {
     try {
-      const response = await fetch(`http://localhost:3005/api/voting/${electionId}/vote/${voteId}/verify`, {
+      const response = await fetch(`https://voting-engine-3zkh.onrender.com/api/voting/${electionId}/vote/${voteId}/verify`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token') || localStorage.getItem('authToken')}`
         }
@@ -156,7 +156,7 @@ const VotePage = () => {
 
   const loadVoteHistory = async () => {
     try {
-      const response = await fetch(`http://localhost:3005/api/voting/${electionId}/history`, {
+      const response = await fetch(`https://voting-engine-3zkh.onrender.com/api/voting/${electionId}/history`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token') || localStorage.getItem('authToken')}`
         }
@@ -763,9 +763,9 @@ Hash: ${voteReceipt.hash}
               <p>✅ Receipt allows independent verification of your vote</p>
               <p>✅ All voting data is stored securely and anonymized</p>
             </div>
-            <div className="mt-3 text-xs text-blue-600">
-              🔗 API Endpoint: http://localhost:3005/api/voting/{electionId}/*
-            </div>
+            {/* <div className="mt-3 text-xs text-blue-600">
+              🔗 API Endpoint: https://voting-engine-3zkh.onrender.com/api/voting/{electionId}/*
+            </div> */}
           </div>
         </div>
       </div>
