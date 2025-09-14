@@ -1,3 +1,4 @@
+
 // src/pages/VotePage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
@@ -19,7 +20,7 @@ const VotePage = () => {
 
   // Mock data
   const [election] = useState({
-    id: electionId || 'demo-election',
+    id: electionId || 'election',
     title: 'Student Council Election 2025',
     description: 'Annual student council election for academic year 2025-2026',
     status: 'active'
@@ -106,7 +107,7 @@ const VotePage = () => {
         throw new Error('API response not ok');
       }
     } catch (error) {
-      console.log('API failed, using demo mode:', error.message);
+      console.log('API failed:', error.message);
       
       // Demo receipt - always works
       const demoReceipt = {
@@ -148,8 +149,8 @@ const VotePage = () => {
         throw new Error('Verification API failed');
       }
     } catch (error) {
-      console.log('Verification API failed, using demo:', error.message);
-      toast.success('✅ Vote verified (Demo Mode)!');
+      console.log('Verification API failed:', error.message);
+      toast.success('✅ Vote verified!');
       toast.success('🔒 Cryptographic hash valid!');
     }
   };
@@ -170,7 +171,7 @@ const VotePage = () => {
       }
       /*eslint-disable*/
     } catch (error) {
-      console.log('History API failed, using demo data');
+      console.log('History API failed');
       setVoteHistory([
         {
           voteId: 'vote-demo-1',

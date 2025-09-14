@@ -12,9 +12,9 @@ class ApiClient {
       user: import.meta.env?.VITE_USER_MANAGEMENT_API_BASE_URL || 'http://localhost:3003',
       election: import.meta.env?.VITE_ELECTION_API_BASE_URL || 'http://localhost:3004',
      votingengineqa:import.meta.env?.VITE__VOTING_ENGINE_BASE_URL || 'http://localhost:3005',
-      notification: import.meta.env?.VITE_NOTIFICATION_API_BASE_URL || 'http://localhost:3006',
-      payment: import.meta.env?.VITE_PAYMENT_API_BASE_URL || 'http://localhost:3007',
-      content: import.meta.env?.VITE_CONTENT_API_BASE_URL || 'http://localhost:3008',
+      fraud: import.meta.env?.VITE_FRAUD_API_URL || 'http://localhost:3008',
+      crypto: import.meta.env?.VITE_API_URL_CRYPTOGRAPHIC_VOTING || 'http://localhost:4000',
+      content: import.meta.env?.VITE_CONTENT_API_BASE_URL || 'http://localhost:8000',
       audit: import.meta.env?.VITE_AUDIT_API_BASE_URL || 'http://localhost:3009',
       campaign: import.meta.env?.VITE_CAMPAIGN_API_BASE_URL || 'http://localhost:3010'
     };
