@@ -36,7 +36,7 @@ const ElectionDetailModal = ({ isOpen, onClose, electionId }) => {
   const fetchElectionDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:3004/api/elections/${electionId}`);
+      const response = await fetch(`https://election-service-2.onrender.com/api/elections/${electionId}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
