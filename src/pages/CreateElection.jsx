@@ -12,15 +12,19 @@ import {
   PhotoIcon,
   VideoCameraIcon
 } from '@heroicons/react/24/outline';
-import electionService from '../services/election/electionService';
+//import electionService from '../services/election/electionService';
 import ProgressSteps from '../components/election/ProgressSteps';
 import BasicInfo from '../components/election/BasicInfo';
 import Schedule from '../components/election/Schedule';
 import VotingSetup from '../components/election/VotingSetup';
 import AdvancedSettings from '../components/election/AdvancedSettings';
+//import ElectionService from '../services/election/ElectionService';
+import { useElection } from '../contexts/ElectionContext/useElection';
+import eeelllectionService from '../services/election/EeellllectionService';
 
 
 const CreateElection = () => {
+  const { dispatch } = useElection();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -163,81 +167,161 @@ const CreateElection = () => {
   };
 
   // Form submission
-  const handleSubmit = async (isDraft = false) => {
-    setIsLoading(true);
-    
-    try {
-      // Client-side validation
-      if (!formData.title.trim()) {
-        toast.error('Election title is required');
-        return;
-      }
+  // Form submission
+const handleSubmit = async (isDraft = false) => {
+  setIsLoading(true);
 
-      if (!formData.description.trim()) {
-        toast.error('Election description is required');
-        return;
-      }
-
-      if (!formData.startDate || !formData.endDate) {
-        toast.error('Start and end dates are required');
-        return;
-      }
-
-      if (new Date(`${formData.endDate}T${formData.endTime}`) <= new Date(`${formData.startDate}T${formData.startTime}`)) {
-        toast.error('End date must be after start date');
-        return;
-      }
-
-      // Validate questions
-      for (const question of formData.questions) {
-        if (!question.question.trim()) {
-          toast.error('All questions must have text');
-          return;
-        }
-        
-        const validOptions = question.options.filter(opt => opt.trim());
-        if (validOptions.length < 2) {
-          toast.error('Each question must have at least 2 options');
-          return;
-        }
-      }
-
-      // Show progress toast
-      const loadingToast = toast.loading(
-        isDraft ? 'Saving election as draft...' : 'Creating election...'
-      );
-
-      try {
-        // Call the election service to create election with questions and answers
-        const result = await electionService.createElection(formData, isDraft);
-        
-        // Dismiss loading toast
-        toast.dismiss(loadingToast);
-        
-        // Show success message
-        toast.success(result.message);
-        
-        console.log('Election created successfully:', result);
-        
-        // Navigate to elections list or the created election
-        navigate('/elections');
-        
-      } catch (apiError) {
-        // Dismiss loading toast
-        toast.dismiss(loadingToast);
-        
-        // Show specific error message from API
-        toast.error(apiError.message);
-        console.error('API Error:', apiError);
-      }
-
-    } catch (error) {
-      console.error('Unexpected error creating election:', error);
-      toast.error('An unexpected error occurred. Please try again.');
-    } finally {
-      setIsLoading(false);
+  try {
+    // Client-side validation
+    if (!formData.title.trim()) {
+      toast.error('Election title is required');
+      return;
     }
-  };
+
+    if (!formData.description.trim()) {
+      toast.error('Election description is required');
+      return;
+    }
+
+    if (!formData.startDate || !formData.endDate) {
+      toast.error('Start and end dates are required');
+      return;
+    }
+
+    if (new Date(`${formData.endDate}T${formData.endTime}`) <= new Date(`${formData.startDate}T${formData.startTime}`)) {
+      toast.error('End date must be after start date');
+      return;
+    }
+
+    // Validate questions
+    for (const question of formData.questions) {
+      if (!question.question.trim()) {
+        toast.error('All questions must have text');
+        return;
+      }
+
+      const validOptions = question.options.filter(opt => opt.trim());
+      if (validOptions.length < 2) {
+        toast.error('Each question must have at least 2 options');
+        return;
+      }
+    }
+
+    // Show progress toast
+    const loadingToast = toast.loading(
+      isDraft ? 'Saving election as draft...' : 'Creating election...'
+    );
+
+    try {
+      // Call the election service to create election with questions and answers
+      const result = await eeelllectionService.createElection(formData, isDraft);
+
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+
+      // Show success message
+      toast.success(result.message);
+
+      console.log('Election created successfully:', result);
+
+      // ⬅️ Update election context here
+      dispatch({ type: "ADD_ELECTION", payload: result.data });
+
+      // Navigate to elections list or the created election
+      navigate('/elections');
+
+    } catch (apiError) {
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+
+      // Show specific error message from API
+      toast.error(apiError.message);
+      console.error('API Error:', apiError);
+    }
+
+  } catch (error) {
+    console.error('Unexpected error creating election:', error);
+    toast.error('An unexpected error occurred. Please try again.');
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+  // const handleSubmit = async (isDraft = false) => {
+  //   setIsLoading(true);
+    
+  //   try {
+  //     // Client-side validation
+  //     if (!formData.title.trim()) {
+  //       toast.error('Election title is required');
+  //       return;
+  //     }
+
+  //     if (!formData.description.trim()) {
+  //       toast.error('Election description is required');
+  //       return;
+  //     }
+
+  //     if (!formData.startDate || !formData.endDate) {
+  //       toast.error('Start and end dates are required');
+  //       return;
+  //     }
+
+  //     if (new Date(`${formData.endDate}T${formData.endTime}`) <= new Date(`${formData.startDate}T${formData.startTime}`)) {
+  //       toast.error('End date must be after start date');
+  //       return;
+  //     }
+
+  //     // Validate questions
+  //     for (const question of formData.questions) {
+  //       if (!question.question.trim()) {
+  //         toast.error('All questions must have text');
+  //         return;
+  //       }
+        
+  //       const validOptions = question.options.filter(opt => opt.trim());
+  //       if (validOptions.length < 2) {
+  //         toast.error('Each question must have at least 2 options');
+  //         return;
+  //       }
+  //     }
+
+  //     // Show progress toast
+  //     const loadingToast = toast.loading(
+  //       isDraft ? 'Saving election as draft...' : 'Creating election...'
+  //     );
+
+  //     try {
+  //       // Call the election service to create election with questions and answers
+  //       const result = await ElectionService.createElection(formData, isDraft);
+        
+  //       // Dismiss loading toast
+  //       toast.dismiss(loadingToast);
+        
+  //       // Show success message
+  //       toast.success(result.message);
+        
+  //       console.log('Election created successfully:', result);
+        
+  //       // Navigate to elections list or the created election
+  //       navigate('/elections');
+        
+  //     } catch (apiError) {
+  //       // Dismiss loading toast
+  //       toast.dismiss(loadingToast);
+        
+  //       // Show specific error message from API
+  //       toast.error(apiError.message);
+  //       console.error('API Error:', apiError);
+  //     }
+
+  //   } catch (error) {
+  //     console.error('Unexpected error creating election:', error);
+  //     toast.error('An unexpected error occurred. Please try again.');
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   // Navigation helpers
   const nextStep = () => setCurrentStep(Math.min(4, currentStep + 1));

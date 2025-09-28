@@ -40,7 +40,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       },
       {
         name: 'Elections',
-        href: '/elections',
+        href: '/elections-2',
         icon: DocumentTextIcon,
         show: true
       }
@@ -75,6 +75,18 @@ const Sidebar = ({ isOpen, onClose }) => {
       icon: ShieldCheckIcon,
       show: true
     });
+      roleSpecificNavigation.push({
+      name: 'List of All Election',
+      href: '/elections-2',
+      icon: ShieldCheckIcon,
+      show: true
+    });
+       // {
+      //   name: 'Elections',
+      //   href: '/elections',
+      //   icon: DocumentTextIcon,
+      //   show: true
+      // }
 
     // Audit - For auditors and admins
     if (hasPermission('view_audit')) {

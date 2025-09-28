@@ -284,7 +284,7 @@ const VotePage = () => {
           onClick={() => navigate('/elections')}
           className="flex items-center text-blue-600 hover:text-blue-700 mb-4"
         >
-          ← Back to Elections
+          ← Back to Elections 
         </button>
         
         <div className="bg-white rounded-lg shadow-sm border p-6">
