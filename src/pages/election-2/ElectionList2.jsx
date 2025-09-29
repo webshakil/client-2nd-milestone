@@ -71,8 +71,8 @@ const ElectionList2 = () => {
       setLoading(true);
       
       // Fetch all elections from the API
-      //const response = await fetch('http://localhost:3004/api/elections');
-       const response = await fetch('https://election-service-2.onrender.com/api/elections');
+      const response = await fetch(`${import.meta.env.VITE_ELECTION_API_BASE_URL_SINGLE}`);
+       //const response = await fetch('https://election-service-2.onrender.com/api/elections');
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

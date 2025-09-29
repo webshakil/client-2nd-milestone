@@ -36,7 +36,8 @@ const ElectionDetailModal = ({ isOpen, onClose, electionId }) => {
   const fetchElectionDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://election-service-2.onrender.com/api/elections/${electionId}`);
+      //const response = await fetch(`https://election-service-2.onrender.com/api/elections/${electionId}`);
+      const response = await fetch(`${import.meta.env.VITE_ELECTION_API_BASE_URL_SINGLE}/${electionId}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
