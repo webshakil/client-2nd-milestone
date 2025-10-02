@@ -22,7 +22,7 @@ const PaymentModal = ({ isOpen, onClose, election }) => {
   // Mock Stripe Payment (no API call)
   const processStripePayment = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000));
-    toast.success('Stripe checkout would open here. (Demo mode - no actual redirect)');
+    toast.success('Stripe checkout would open here.');
     console.log('Mock Stripe Checkout:', { success: true, sessionId: 'cs_test_mock_' + Date.now() });
     return { success: true };
   };
@@ -30,7 +30,7 @@ const PaymentModal = ({ isOpen, onClose, election }) => {
   // Mock Paddle Payment (no API call)
   const processPaddlePayment = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000));
-    toast.success('Paddle checkout would open here. (Demo mode - no actual redirect)');
+    toast.success('Paddle checkout would open here.');
     console.log('Mock Paddle Checkout:', { success: true, transactionId: 'txn_mock_' + Date.now() });
     return { success: true };
   };
