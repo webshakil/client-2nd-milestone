@@ -13,6 +13,7 @@
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
+    "@stripe/stripe-js": "^8.0.0",
     "axios": "^1.11.0",
     "crypto-js": "^4.2.0",
     "i": "^0.3.7",

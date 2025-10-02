@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3005/api/payments';
+const API_URL = 'https://payment-service-oe6v.onrender.com/api/payments';
 
 export const paymentService = {
   // Wallet operations
