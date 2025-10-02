@@ -39,7 +39,7 @@ const PaymentModal = ({ isOpen, onClose, election }) => {
   const processDemoPayment = async () => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        toast.success('Demo payment successful! You can now vote.');
+        toast.success('Payment successful! You can now vote.');
         resolve({ success: true });
       }, 2000);
     });
